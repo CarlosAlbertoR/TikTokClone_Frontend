@@ -1,24 +1,27 @@
-import { configureStore, createSlice } from "@reduxjs/toolkit";
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
+import persistReducer from "redux-persist/es/persistReducer";
+import persistStore from "redux-persist/es/persistStore";
+import storage from "redux-persist/lib/storage";
+import likeReducer from "./likes";
+import userReducer from "./user";
+import videosReducer from "./videos";
 
-let userSlice = createSlice({
-  name: "user",
-  initialState: {
-    user: null,
-    status: "",
-  },
-  reducers: {
-    signIn: (state, action) => {
-      state.user = action.payload;
-    },
-    logOut: (state) => {
-      state.user = null;
-    },
-  },
+const reducer = combineReducers({
+  user: userReducer,
+  videos: videosReducer,
+  like: likeReducer,
 });
 
-export const { signIn, logOut } = userSlice.actions;
+const persistConfg = {
+  key: "root",
+  storage: storage,
+  whitelist: ["user"],
+};
+
+const persistedReducer = persistReducer(persistConfg, reducer);
+
 export const store = configureStore({
-  reducer: {
-    user: userSlice.reducer,
-  },
+  reducer: persistedReducer,
 });
+
+export const persistor = persistStore(store);

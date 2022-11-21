@@ -1,69 +1,24 @@
 import { Provider } from "react-redux";
-import {
-  BrowserRouter,
-  Link,
-  Outlet,
-  Route,
-  Routes,
-  useNavigate,
-  useParams,
-} from "react-router-dom";
-import { store } from "./store";
-import SignIn from "./users/Signin";
-
-let NotImplemented = () => {
-  return (
-    <>
-      <Link to="/videos">Go to videos</Link>
-      <h1>This page don't be ready yet</h1>
-    </>
-  );
-};
-
-let Error404 = () => {
-  return (
-    <>
-      <Link to="/videos">Return to home</Link>
-      <h1>This page don't exist - 404</h1>
-    </>
-  );
-};
-
-let ShowVideo = () => {
-  let { id } = useParams();
-  return <p>{id}</p>;
-};
-
-let UsersOutlet = () => {
-  return (
-    <>
-      <Outlet />
-    </>
-  );
-};
+import { BrowserRouter } from "react-router-dom";
+import { PersistGate } from "redux-persist/integration/react";
+import { ThemeProvider } from "styled-components";
+import Layout from "./components/Layout";
+import AppRoutes from "./routes/AppRoutes";
+import { persistor, store } from "./store";
+import theme, { GlobalStyles } from "./theme";
 
 function App() {
   return (
     <BrowserRouter>
       <Provider store={store}>
-        <Routes>
-          <Route path="/" element={<NotImplemented />} />
-
-          <Route path="/users" element={<UsersOutlet />}>
-            <Route path="signup" element={<NotImplemented />} />
-            <Route path="signin" element={<SignIn />} />
-            <Route path=":id" element={<NotImplemented />} />
-            <Route path=":id/videos" element={<NotImplemented />} />
-          </Route>
-
-          <Route path="/videos">
-            <Route path="/" element={<NotImplemented />} />
-            <Route path=":id" element={<ShowVideo />} />
-            <Route path="new" element={<NotImplemented />} />
-          </Route>
-
-          <Route path="*" element={<Error404 />} />
-        </Routes>
+        <PersistGate loading={null} persistor={persistor}>
+          <ThemeProvider theme={theme}>
+            <GlobalStyles />
+            <Layout>
+              <AppRoutes />
+            </Layout>
+          </ThemeProvider>
+        </PersistGate>
       </Provider>
     </BrowserRouter>
   );
