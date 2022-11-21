@@ -18,21 +18,16 @@ let SignIn = (props) => {
   return (
     <UserFormLayout>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <AppInput
-          type="email"
-          name="email"
-          register={register}
-          label="Correo electrónico"
-        />
+        <AppInput type="email" name="email" register={register} label="Email" />
 
         <AppInput
           type="password"
           name="password"
           register={register}
-          label="Contraseña"
+          label="Password"
         />
         <AppButton type="submit" small>
-          Enviar
+          Log In
         </AppButton>
       </form>
     </UserFormLayout>

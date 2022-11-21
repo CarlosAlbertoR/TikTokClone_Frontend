@@ -9,8 +9,8 @@ let Layout = (props) => {
       <nav>
         <Routes>
           <Route path="/videos" element={<nav></nav>} />
-          <Route path="/usuarios/login" element={<nav></nav>} />
-          <Route path="/usuarios/registro" element={<nav></nav>} />
+          <Route path="/users/login" element={<nav></nav>} />
+          <Route path="/users/signup" element={<nav></nav>} />
           <Route path="*" element={<Header></Header>} />
         </Routes>
       </nav>

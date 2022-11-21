@@ -64,8 +64,8 @@ let SimpleFooterContainer = styled.footer`
 let LoggedInFooter = () => (
   <FooterContainer>
     <Link to="/videos"> Home </Link>
-    <FABButton to="/videos/nuevo"> + </FABButton>
-    <Link to="/usuarios/profile"> Perfil </Link>
+    <FABButton to="/videos/new"> + </FABButton>
+    <Link to="/users/profile"> Profile </Link>
   </FooterContainer>
 );
 
@@ -73,19 +73,24 @@ let LoggedOutFooter = () => (
   <SimpleFooterContainer>
     <Routes>
       <Route
-        path="/usuarios/registro"
+        path="/users/signup"
         element={
           <p>
-            ¿Ya tienes cuenta? <Link to="/usuarios/login">Inicia sesión</Link>{" "}
+            Do you already have an account?
+            <Link to="/users/login" style={{ marginLeft: "0.6rem" }}>
+              Log In
+            </Link>
           </p>
         }
       ></Route>
       <Route
-        path="/usuarios/login"
+        path="/users/login"
         element={
           <p>
-            ¿No tienes cuenta?{" "}
-            <Link to="/usuarios/registro">Crea una cuenta</Link>{" "}
+            You do not have an account?
+            <Link to="/users/signup" style={{ marginLeft: "0.6rem" }}>
+              Create an account
+            </Link>
           </p>
         }
       ></Route>

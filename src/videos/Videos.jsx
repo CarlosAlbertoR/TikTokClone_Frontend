@@ -9,6 +9,7 @@ let Videos = (props) => {
   let dispatch = useDispatch();
   useEffect(() => {
     dispatch(loadVideos());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

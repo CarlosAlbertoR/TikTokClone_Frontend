@@ -13,7 +13,7 @@ let LogOutButton = (props) => {
 
   return (
     <ClearButton className={props.className} onClick={logOutUser}>
-      Cerrar sesión
+      Log Out
     </ClearButton>
   );
 };

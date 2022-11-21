@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { Axios } from "axios";
+import Axios from "axios";
 import { environment } from "../config/api";
 
 export const signUp = createAsyncThunk(
@@ -27,7 +27,7 @@ export const signIn = createAsyncThunk(
   }
 );
 
-export let userSlice = createSlice({
+let userSlice = createSlice({
   name: "user",
   initialState: {
     user: null,

@@ -12,6 +12,7 @@ let VideoShow = (props) => {
 
   useEffect(() => {
     dispatch(getVideo(id));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <SmallContainer>{video && <Video video={video}></Video>}</SmallContainer>

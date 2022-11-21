@@ -76,6 +76,7 @@ let Profile = (props) => {
 
   useEffect(() => {
     dispatch(loadVideosForUser());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <SmallContainer>
@@ -85,24 +86,24 @@ let Profile = (props) => {
         </div>
         <div className="info-container">
           <p>
-            <strong>@{user.username}</strong>{" "}
+            <strong>@{user.username}</strong>
           </p>
           <Pill> {videos.length} videos </Pill>
         </div>
         <Counter area="following">
           <p className="number">0</p>
-          <p className="description">Siguiendo</p>
+          <p className="description">Following</p>
         </Counter>
         <Counter area="followers">
           <p className="number">0</p>
-          <p className="description">Seguidores</p>
+          <p className="description">Followers</p>
         </Counter>
         <Counter area="likes">
           <p className="number">0</p>
           <p className="description">Likes</p>
         </Counter>
-        <AppButton className="button">Editar</AppButton>
-        <LogOutButton>Cerrar sesión</LogOutButton>
+        <AppButton className="button">Edit</AppButton>
+        <LogOutButton>Log Out</LogOutButton>
       </ProfileHeader>
       <VideosContainer>
         {videos &&
