@@ -7,10 +7,10 @@ let innerLoadVideos = async (path, thunkAPI) => {
   try {
     token = thunkAPI.getState().user.user.jwtToken;
   } catch {
-    return Promise.reject("No hay token");
+    return Promise.reject("No token");
   }
 
-  if (!token) return Promise.reject("No hay token");
+  if (!token) return Promise.reject("No token");
 
   let response = await Axios.get(`${environment.domain}/${path}`, {
     headers: {
@@ -43,10 +43,10 @@ export const getVideo = createAsyncThunk(
     try {
       token = thunkAPI.getState().user.user.jwtToken;
     } catch {
-      return Promise.reject("No hay token");
+      return Promise.reject("No token");
     }
 
-    if (!token) return Promise.reject("No hay token");
+    if (!token) return Promise.reject("No token");
 
     let response = await Axios.get(`${environment.domain}/videos/${videoId}`, {
       headers: {
@@ -65,10 +65,10 @@ export const createVideo = createAsyncThunk(
     try {
       token = thunkAPI.getState().user.user.jwtToken;
     } catch {
-      return Promise.reject("No hay token");
+      return Promise.reject("No token");
     }
 
-    if (!token) return Promise.reject("No hay token");
+    if (!token) return Promise.reject("No token");
 
     let response = await Axios.post(`${environment.domain}/videos`, videoData, {
       headers: {

@@ -33,13 +33,12 @@ let VideosForm = (props) => {
           <AppInput
             type="text"
             name="title"
-            ref={register}
-            id=""
+            register={register}
             label="Title"
           />
           <Fieldset>
             <label>Video file</label>
-            <input type="file" name="video" ref={register} id="" />
+            <input type="file" name="video" ref={register} />
           </Fieldset>
           <AppButton type="submit" small>
             Upload vídeo
